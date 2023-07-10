@@ -1,5 +1,3 @@
-
-
 function getComputerChoice(array) {
   const randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
@@ -15,7 +13,7 @@ function computerSelection() {
 function getPlayerChoice(round) {
   const choice = ['rock', 'paper', 'scissors'];
   return new Promise((resolve) => {
-    const userInput = window.prompt(`Round ${round}:Enter your choice (Rock, Paper, or Scissors): `);
+    const userInput = window.prompt(`Round ${round}: Enter your choice (Rock, Paper, or Scissors): `);
     const lowerUserInput = userInput.toLowerCase();
     if (choice.includes(lowerUserInput)) {
       console.log('Player choice:', lowerUserInput);
@@ -48,7 +46,7 @@ async function game() {
   for (let round = 1; round <= 5; round++) {
     console.log(`--- Round ${round} ---`);
 
-    const playerChoice = await getPlayerChoice();
+    const playerChoice = await getPlayerChoice(round);
     if (playerChoice === null) {
       round--;
       continue;
@@ -64,7 +62,7 @@ async function game() {
       computerScore++;
       console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
     } else {
-      console.log('It\'s a tie this round!');
+      console.log("It's a tie this round!");
     }
 
     console.log('------------------------------');
